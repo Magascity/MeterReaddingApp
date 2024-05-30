@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeterReaddingApp.Pages.HomePage"
+             Title="HomePage">
+    <!--<VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>-->
+
+    <StackLayout Padding="20">
+        <!-- Label to display the name of the logged-in user -->
+        <Label x:Name="UserNameLabel"
+               FontSize="Large"
+               TextColor="Black"
+               Margin="0,0,0,20" />
+
+        <!-- Label to display the name of the logged-in user -->
+        <Label x:Name="SbuLabel"
+        FontSize="Large"
+        TextColor="Black"
+        Margin="0,0,0,20" />
+
+        <!-- ListView to display customer details -->
+        <ListView x:Name="CustomerListView"
+          ItemsSource="{Binding Customers}"
+          Margin="0,20,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ScrollView>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <Label Text="{Binding CustomerName}" FontSize="Medium" />
+                                <Label Text="{Binding Email}" FontSize="Small" />
+                                <Label Text="{Binding PhoneNumber}" FontSize="Small" />
+                                <Label Text="{Binding CustomerAddress}" FontSize="Small" />
+                                <Label Text="{Binding CustReference}" FontSize="Small" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Button Text="Update"
+                                    Command="{Binding Source={x:Reference CustomerListView}, Path=BindingContext.UpdateCommand}"
+                                    CommandParameter="{Binding .}" />
+
+                                    <Button Text="Add Meter Readings"
+                                    Command="{Binding Source={x:Reference CustomerListView}, Path=BindingContext.AddMeterReadingsCommand}"
+                                    CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+
+
+</ContentPage>
